@@ -1,5 +1,7 @@
+//logic author Vikas Borage
+
 import { gql } from '@apollo/client';
-import client from 'lib/apolloClient.js'; // Adjust the path based on your file structure
+import client from 'src/lib/apolloClient.js'; // Adjust the path based on your file structure
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import { Metadata } from "next";
 
@@ -78,7 +80,7 @@ export default BlogPage;
 
 
 
-
+/*
 // const GET_BLOG_POSTS = gql`
 //   query PageBlogPost {
 //     pageBlogPost(id: "5JDZzK5zitv6nAf4hdJIqU") {
@@ -168,4 +170,4 @@ export default BlogPage;
 //       </div>
 //     </>
 //   );
-// };
+// };*/
