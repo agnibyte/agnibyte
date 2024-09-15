@@ -1,7 +1,9 @@
-// src/pages/404.tsx
+// app/not-found.jsx
+
 import Link from 'next/link';
 
-const ErrorPage = () => {
+export default function NotFound () {
+  console.log("Custom 404 page is being rendered");
   return (
     <section className="relative z-10 pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
       <div className="container">
@@ -140,10 +142,7 @@ const ErrorPage = () => {
                 The page you were looking for appears to have been moved,
                 deleted or does not exist.
               </p>
-              <Link
-                href="/"
-                className="px-8 py-3 text-base font-bold text-white duration-300 rounded-md bg-primary shadow-signUp hover:bg-white hover:text-primary md:px-9 lg:px-8 xl:px-9"
-              >
+              <Link href="/Homepage" className="inline-block px-8 py-3 text-base font-bold text-white duration-300 rounded-md bg-primary shadow-signUp hover:bg-white hover:text-primary md:px-9 lg:px-8 xl:px-9">
                 Back to Homepage
               </Link>
             </div>
@@ -216,90 +215,90 @@ const ErrorPage = () => {
             <linearGradient
               id="paint0_linear_116:1140"
               x1="72.6667"
-              y1="126.5"
-              x2="112.92"
-              y2="110.344"
+              y1="133.791"
+              x2="180.388"
+              y2="180.167"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#F8F8F8" />
-              <stop offset="1" stopColor="#F1F1F1" />
+              <stop stopColor="#FFA500" stopOpacity="0" />
+              <stop offset="1" stopColor="#FFA500" />
             </linearGradient>
             <linearGradient
               id="paint1_linear_116:1140"
-              x1="67.2366"
-              y1="162.475"
-              x2="122.372"
-              y2="155.097"
+              x1="56.25"
+              y1="120.307"
+              x2="136.121"
+              y2="183.63"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#E1E1E1" />
-              <stop offset="1" stopColor="#F8F8F8" />
+              <stop stopColor="#FFA500" stopOpacity="0" />
+              <stop offset="1" stopColor="#FFA500" />
             </linearGradient>
             <linearGradient
               id="paint2_linear_116:1140"
-              x1="216.62"
-              y1="226.782"
-              x2="209.626"
-              y2="109.663"
+              x1="180.134"
+              y1="139.999"
+              x2="261.841"
+              y2="182.712"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#F8F8F8" />
-              <stop offset="1" stopColor="#F1F1F1" />
+              <stop stopColor="#FFA500" stopOpacity="0" />
+              <stop offset="1" stopColor="#FFA500" />
             </linearGradient>
             <linearGradient
               id="paint3_linear_116:1140"
-              x1="170.937"
-              y1="143.1"
-              x2="234.637"
-              y2="122.784"
+              x1="175.191"
+              y1="109.015"
+              x2="259.235"
+              y2="162.61"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#F1F1F1" />
-              <stop offset="1" stopColor="#E1E1E1" />
+              <stop stopColor="#FFA500" stopOpacity="0" />
+              <stop offset="1" stopColor="#FFA500" />
             </linearGradient>
             <linearGradient
               id="paint4_linear_116:1140"
-              x1="16.2917"
-              y1="193.972"
-              x2="41.0556"
-              y2="148.026"
+              x1="6.655"
+              y1="184.097"
+              x2="79.2435"
+              y2="225.618"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#F8F8F8" />
-              <stop offset="1" stopColor="#F1F1F1" />
+              <stop stopColor="#FFA500" stopOpacity="0" />
+              <stop offset="1" stopColor="#FFA500" />
             </linearGradient>
             <linearGradient
               id="paint5_linear_116:1140"
-              x1="7.91667"
-              y1="228.745"
-              x2="31.7528"
-              y2="223.274"
+              x1="-1.52431e-05"
+              y1="180.677"
+              x2="65.451"
+              y2="224.415"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#E1E1E1" />
-              <stop offset="1" stopColor="#F8F8F8" />
+              <stop stopColor="#FFA500" stopOpacity="0" />
+              <stop offset="1" stopColor="#FFA500" />
             </linearGradient>
             <linearGradient
               id="paint6_linear_116:1140"
-              x1="297.045"
-              y1="114.787"
-              x2="280.5"
-              y2="174.325"
+              x1="246.089"
+              y1="76.5172"
+              x2="349.651"
+              y2="124.922"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#F8F8F8" />
-              <stop offset="1" stopColor="#F1F1F1" />
+              <stop stopColor="#FFA500" stopOpacity="0" />
+              <stop offset="1" stopColor="#FFA500" />
             </linearGradient>
             <linearGradient
               id="paint7_linear_116:1140"
-              x1="301.893"
-              y1="105.515"
-              x2="282.675"
-              y2="169.015"
+              x1="228.938"
+              y1="62.0645"
+              x2="312.083"
+              y2="121.827"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#F1F1F1" />
-              <stop offset="1" stopColor="#E1E1E1" />
+              <stop stopColor="#FFA500" stopOpacity="0" />
+              <stop offset="1" stopColor="#FFA500" />
             </linearGradient>
           </defs>
         </svg>
@@ -308,4 +307,6 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+
+
+
