@@ -7,8 +7,32 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Meet Our Team | AgniByte Tech',
-  description: 'Learn more about the talented individuals behind AgniByte Tech.',
-  // other metadata//
+  description: 'Learn more about the talented individuals behind AgniByte Tech. Meet the professionals who drive innovation and excellence in IT solutions.',
+  keywords: ['AgniByte Tech', 'team', 'IT professionals', 'tech team', 'innovation', 'IT solutions'],
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Meet Our Team | AgniByte Tech',
+    description: 'Get to know the talented professionals who power AgniByte Tech’s IT solutions.',
+    url: 'https://www.agni-byte.com/our-team', // Update with actual team page URL
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'AgniByte Tech',
+    images: [
+      {
+        url: 'https://www.agni-byte.com/images/team-page-thumbnail.jpg', // Replace with actual image
+        alt: 'AgniByte Tech Team',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Meet Our Team | AgniByte Tech',
+    description: 'Explore the dynamic professionals driving success at AgniByte Tech.',
+    images: 'https://www.agni-byte.com/images/team-page-thumbnail.jpg', // Replace with actual image
+  },
+  viewport: 'width=device-width, initial-scale=1.0',
 };
 
 const TeamPage: React.FC = () => {
