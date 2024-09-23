@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { TeamType } from '@/types/team';
 import { FaFacebookF, FaInstagram, FaGithub, FaLink } from 'react-icons/fa';
@@ -11,6 +11,8 @@ interface TeamMemberProps {
 }
 
 const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
+  const [loading, setLoading] = useState(true); // State for shimmer loading
+
   return (
     <motion.div
       className="card bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden"
@@ -25,12 +27,17 @@ const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
           transition={{ type: 'spring', stiffness: 300 }}
           className="relative w-32 h-32"
         >
+          {/* Shimmer loader for the image */}
+          {loading && (
+            <div className="w-full h-full bg-gray-300 dark:bg-gray-700 animate-pulse rounded-full absolute top-0 left-0"></div>
+          )}
           <Image
             src={member.image}
             alt={member.name}
             fill
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'cover', opacity: loading ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}
             className="rounded-full"
+            onLoadingComplete={() => setLoading(false)} // Hide shimmer when image is loaded
           />
         </motion.div>
       </div>
