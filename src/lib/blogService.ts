@@ -22,45 +22,45 @@ export const GET_BLOG_POSTS = gql`
   }
 `;
 export const fetchBlogs = async () => {
-    try {
-      const { data } = await client.query({
-        query: GET_BLOG_POSTS,
-      });
-  
-      return data;
-    } catch (error) {
-      console.error('Error fetching blog posts:', error);
-      return [];
-    }
-  };
+  try {
+    const { data } = await client.query({
+      query: GET_BLOG_POSTS,
+    });
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    return [];
+  }
+};
 
 // Query for fetching a single blog post by ID
 export const GET_BLOG_POST_BY_ID = gql`
   query PageBlogPost($id: String!) {
     pageBlogPost(id: $id) {
       _id
+      internalName
+      slug
+      publishedDate
       title
       shortDescription
       featuredImage {
         url
         title
       }
-      content
-      publishedDate
     }
   }
 `;
 export const fetchBlogBySysId = async (id: string) => {
-    try {
-      const { data } = await client.query({
-        query: GET_BLOG_POST_BY_ID,
-        variables: { id },
-      });
-  
-      // Return the blog post data
-      return data.pageBlogPost || null;
-    } catch (error) {
-      console.error('Error fetching blog post by sys.id:', error);
-      return null;
-    }
-  };
+  try {
+    const { data } = await client.query({
+      query: GET_BLOG_POST_BY_ID,
+      variables: { id },
+    });
+
+    return data.pageBlogPost || null;
+  } catch (error) {
+    console.error('Error fetching blog post by sys.id:', error);
+    return null;
+  }
+};
