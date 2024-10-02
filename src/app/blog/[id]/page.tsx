@@ -16,7 +16,6 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div>
-      <h1>{blogDetails.title}</h1>
       <BlogDetailPage
         blogPost={blogDetails}
         id={blogDetails._id}
