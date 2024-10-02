@@ -1,19 +1,19 @@
 import BlogDetailPage from "@/components/Blog/BlogDetailPage";
-import { fetchBlogBySysId } from "@/lib/blogService";
+import { fetchBlogBySysId } from "@/lib/blogService"; // assuming you have a function to fetch all blog IDs
 import { Metadata } from "next";
 
-// Meta information for the page
 export const metadata: Metadata = {
   title: 'Blog Details',
   description: 'Read the full blog post',
 };
 
+export async function generateStaticParams() {
 
 
-const BlogsDetails = async ({ params }: { params: { id: string } }) => {
+}
+
+export default async function BlogsDetails({ params }: { params: { id: string } }) {
   const blogDetails = await fetchBlogBySysId(params.id);
-
-  // console.log('blogDetails', blogDetails)
 
   if (!blogDetails) {
     return <p>Blog post not found.</p>;
@@ -24,13 +24,11 @@ const BlogsDetails = async ({ params }: { params: { id: string } }) => {
       <h1>{blogDetails.title}</h1>
       <BlogDetailPage
         blogPost={blogDetails}
-        id={""}
+        id={blogDetails._id}
         title={blogDetails.title}
-        description={""}
-        imageUrl={""}
+        description={blogDetails.shortDescription}
+        imageUrl={blogDetails.featuredImage?.url || ""}
       />
     </div>
   );
 }
-
-export default BlogsDetails;
