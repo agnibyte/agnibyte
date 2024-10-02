@@ -1,24 +1,22 @@
 // src/app/blog/[id]/page.tsx
-import BlogDetailPage from "@/components/Blog/BlogDetailPage";
 import { fetchBlogs, fetchBlogBySysId } from "@/lib/blogService";
-import { Metadata } from "next";
+import BlogDetailPage from "@/components/Blog/BlogDetailPage";
 
-// Static Params generation for dynamic routes
 export async function generateStaticParams() {
   const data = await fetchBlogs(); // Fetch all blogs
   const allBlogs = data.pageBlogPostCollection.items; // Extract the items array
 
   if (!Array.isArray(allBlogs)) {
-    console.error('Expected an array, but got:', allBlogs);
+    console.error("Expected an array, but got:", allBlogs);
     return []; // Return an empty array or handle the error appropriately
   }
 
   return allBlogs.map((blog: { _id: string }) => ({
-    params: { id: blog._id } // Extract blog IDs for the dynamic route
+    params: { id: blog._id } // Generate static params
   }));
 }
 
-// Default export of the page component
+// Page component for dynamic route
 export default async function Page({ params }: { params: { id: string } }) {
   const blogDetails = await fetchBlogBySysId(params.id);
 
