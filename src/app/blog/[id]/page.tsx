@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 
 // Static Params generation for dynamic routes
 export async function generateStaticParams() {
-  const allBlogs = await fetchBlogs(); // Fetch all blogs
+  const data = await fetchBlogs(); // Fetch all blogs
+  const allBlogs = data.pageBlogPostCollection.items; // Extract the items array
 
   if (!Array.isArray(allBlogs)) {
     console.error('Expected an array, but got:', allBlogs);
