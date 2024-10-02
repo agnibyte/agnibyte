@@ -1,22 +1,12 @@
 import BlogDetailPage from "@/components/Blog/BlogDetailPage";
-import { fetchBlogBySysId, fetchAllBlogIds } from "@/lib/blogService";
+import { fetchBlogBySysId } from "@/lib/blogService";
 import { Metadata } from "next";
 
-// Metadata for the blog page
 export const metadata: Metadata = {
   title: 'Blog Details',
   description: 'Read the full blog post',
 };
 
-// Function to generate static params for dynamic routes
-export async function generateStaticParams() {
-  const blogIds = await fetchAllBlogIds(); // Assume this function fetches all blog post IDs
-  return blogIds.map((id: string) => ({
-    id,
-  }));
-}
-
-// Page component to display blog post
 export default async function Page({ params }: { params: { id: string } }) {
   const blogDetails = await fetchBlogBySysId(params.id);
 
