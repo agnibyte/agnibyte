@@ -5,6 +5,7 @@ import client from '@/lib/apolloClient';
 import Link from 'next/link';
 import Breadcrumb from '@/components/Common/Breadcrumb';
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Blog Details - Full Post',
@@ -59,7 +60,9 @@ const BlogListPage = async () => {
             blogPosts.map((post) => (
               <Link href={`/blog/${post.sys.id}`} key={post.sys.id}>
                 <div className="bg-white p-6 rounded-lg shadow-md cursor-pointer">
-                  <img
+                  <Image
+                    width={500}
+                    height={500}
                     src={post.featuredImage.url}
                     alt={post.featuredImage.title}
                     className="w-full h-48 object-cover rounded-lg mb-4"

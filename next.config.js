@@ -9,6 +9,12 @@ const nextConfig = {
         port: "",
         //pathname: "/public/images", // Matches all paths on agni-byte.com
       },
+      {
+        protocol: "https",
+        hostname: "images.ctfassets.net",
+        port: "",
+        //pathname: "/public/images", // Matches all paths on agni-byte.com
+      },
     ],
   },
 };

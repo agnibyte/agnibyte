@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Breadcrumb from "../Common/Breadcrumb";
 
 interface BlogDetailPageProps {
@@ -35,7 +36,9 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({
         <h1 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">{title}</h1>
 
         {featuredImage?.url && (
-          <img
+          <Image
+            width={500}
+            height={500}
             src={featuredImage.url}
             alt={featuredImage?.title || "Blog Image"}
             className="w-full h-96 object-cover rounded-lg mb-6"
