@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 
 
-export default async function BlogsDetails({ params }: { params: { id: string } }) {
+const BlogsDetails = async ({ params }: { params: { id: string } }) => {
   const blogDetails = await fetchBlogBySysId(params.id);
 
   // console.log('blogDetails', blogDetails)
@@ -32,3 +32,5 @@ export default async function BlogsDetails({ params }: { params: { id: string } 
     </div>
   );
 }
+
+export default BlogsDetails;
