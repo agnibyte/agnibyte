@@ -57,7 +57,7 @@ const BlogListPage = async () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.length > 0 ? (
             blogPosts.map((post) => (
-              <Link href={`/blog/blogdetails?id=${post.sys.id}`} key={post.sys.id}>
+              <Link href={`/blog/${post.sys.id}`} key={post.sys.id}>
                 <div className="bg-white p-6 rounded-lg shadow-md cursor-pointer">
                   <img
                     src={post.featuredImage.url}
