@@ -8,7 +8,7 @@ export async function generateStaticParams() {
 
   if (!Array.isArray(allBlogs)) {
     console.error("Expected an array, but got:", allBlogs);
-    return []; // Return an empty array or handle the error appropriately
+    return []; // Return an empty array or handle the error appropriatelyhjhjhjvbhjvh
   }
 
   return allBlogs.map((blog: { _id: string }) => ({
