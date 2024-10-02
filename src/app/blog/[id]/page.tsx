@@ -1,12 +1,7 @@
+// src/app/blog/[id]/page.tsx
 import BlogDetailPage from "@/components/Blog/BlogDetailPage";
 import { fetchBlogs, fetchBlogBySysId } from "@/lib/blogService";
 import { Metadata } from "next";
-
-// Metadata for SEO
-export const metadata: Metadata = {
-  title: 'Blog Details',
-  description: 'Read the full blog post',
-};
 
 // Static Params generation for dynamic routes
 export async function generateStaticParams() {
@@ -23,6 +18,7 @@ export async function generateStaticParams() {
   }));
 }
 
+// Default export of the page component
 export default async function Page({ params }: { params: { id: string } }) {
   const blogDetails = await fetchBlogBySysId(params.id);
 
