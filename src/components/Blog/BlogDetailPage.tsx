@@ -27,7 +27,6 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({
   // Destructure content and handle undefined properties
   const { featuredImage, shortDescription, content, publishedDate } = blogPost;
 
-  console.log('blogPost:', blogPost);
 
   return (
     <>
