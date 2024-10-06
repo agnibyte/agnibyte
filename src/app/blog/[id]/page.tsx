@@ -32,18 +32,17 @@ export const metadata: Metadata = {
   viewport: 'width=device-width, initial-scale=1.0',
 };
 
-export async function generateStaticParams() {
-  const [allBlogs] = await Promise.all([fetchBlogs()]);
-  
-  return allBlogs.pageBlogPostCollection.items.map((blog: { sys: { id: any; }; }) => ({
-    slug: blog.sys.id,
-  }))
-}
-export default async function Page({ params }) {
+const BlogPage = async ({ params }) => {
 
   const { id } = params;
-  const [blogDetails] = await Promise.all([fetchBlogBySysId(id)]);
+  let blogDetails = null
 
+  try {
+    blogDetails = await fetchBlogBySysId(id) // Fetch job posts
+  } catch (error) {
+    console.error('Error fetching job posts:', error);
+    // Optionally, you can set jobPosts to a default value or show an error message
+  }
   if (!blogDetails) {
     <p>Blog post not found.</p>
   }
@@ -60,3 +59,4 @@ export default async function Page({ params }) {
     </div>
   );
 }
+export default BlogPage;
