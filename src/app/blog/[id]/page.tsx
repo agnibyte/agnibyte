@@ -1,10 +1,9 @@
 // app/blog/blogdetails.tsx
-import { fetchBlogBySysId, GET_BLOG_POST_BY_ID } from '@/lib/blogService';  // Query for a single blog post
+import { GET_BLOG_POST_BY_ID } from '@/lib/blogService';  // Query for a single blog post
 import client from '@/lib/apolloClient';
 import Breadcrumb from '@/components/Common/Breadcrumb';
 import { Metadata } from 'next';
 import { useSearchParams } from 'next/navigation';
-import BlogDetailPage from '@/components/Blog/BlogDetailPage';
 
 export const metadata: Metadata = {
   title: 'Blog Details - Full Post',
@@ -36,31 +35,41 @@ export const metadata: Metadata = {
   viewport: 'width=device-width, initial-scale=1.0',
 };
 
-const Page = async ({ params }: { params: { id: string } }) => {
-  const { id: blogId } = params; // Extract the blog ID from params
-  let blogDetails = null;
+const BlogDetailPage = async () => {
+  const searchParams = useSearchParams();
+  const blogId = searchParams.get('id'); // Extract the id from the query string
 
   if (!blogId) {
     return <p>No blog ID provided.</p>;
   }
 
   try {
-    blogDetails = await fetchBlogBySysId(blogId);
+    const { data } = await client.query({
+      query: GET_BLOG_POST_BY_ID,
+      variables: { id: blogId },  // Pass the id to fetch blog post
+    });
 
-    if (!blogDetails) {
+    const blogPost = data.pageBlogPost;
+
+    if (!blogPost) {
       return <p>Blog post not found.</p>;
     }
 
     return (
-      <div className="container mx-auto px-4">
-        <BlogDetailPage
-          blogPost={blogDetails}
-          id={blogDetails._id}
-          title={blogDetails.title}
-          description={blogDetails.shortDescription}
-          imageUrl={blogDetails.featuredImage?.url || ""}
-        />
-      </div>
+      <>
+        <Breadcrumb pageName={blogPost.title} description={blogPost.shortDescription} />
+        <div className="container mx-auto px-4 py-10">
+          <h1 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">{blogPost.title}</h1>
+          <img
+            src={blogPost.featuredImage.url}
+            alt={blogPost.featuredImage.title}
+            className="w-full h-96 object-cover rounded-lg mb-6"
+          />
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">{blogPost.shortDescription}</p>
+          <div className="prose dark:prose-dark">{blogPost.content}</div>
+          <p className="text-sm text-gray-500">Published on: {new Date(blogPost.publishedDate).toLocaleDateString()}</p>
+        </div>
+      </>
     );
   } catch (error) {
     console.error('Error fetching blog post:', error);
@@ -68,4 +77,4 @@ const Page = async ({ params }: { params: { id: string } }) => {
   }
 };
 
-export default Page;
+export default BlogDetailPage;
