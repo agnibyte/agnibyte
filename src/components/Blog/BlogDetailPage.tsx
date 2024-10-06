@@ -37,8 +37,8 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({
 
         {featuredImage?.url && (
           <Image
-            width={500}
-            height={500}
+            width={721}
+            height={590}
             src={featuredImage.url}
             alt={featuredImage?.title || "Blog Image"}
             className="w-full h-96 object-cover rounded-lg mb-6"

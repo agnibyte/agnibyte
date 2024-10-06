@@ -1,5 +1,5 @@
 import BlogDetailPage from '@/components/Blog/BlogDetailPage';
-import { fetchBlogBySysId } from '@/lib/blogService';
+import { fetchBlogBySysId, fetchBlogs } from '@/lib/blogService';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -32,6 +32,13 @@ export const metadata: Metadata = {
   viewport: 'width=device-width, initial-scale=1.0',
 };
 
+export async function generateStaticParams() {
+  const [allBlogs] = await Promise.all([fetchBlogs()]);
+  
+  return allBlogs.pageBlogPostCollection.items.map((blog: { sys: { id: any; }; }) => ({
+    slug: blog.sys.id,
+  }))
+}
 export default async function Page({ params }) {
 
   const { id } = params;
