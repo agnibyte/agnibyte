@@ -1,4 +1,7 @@
 // app/todos/[id]/page.tsx
+export function generateStaticParams() {
+  return [{ id: '1' }, { id: '2' }, { id: '3' }]
+}
 
 // Fetch a specific todo based on ID
 async function getTodoById(id: string) {
