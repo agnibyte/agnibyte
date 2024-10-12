@@ -8,7 +8,7 @@ async function getTodos() {
     throw new Error('Failed to fetch data');
   }
   const todos = await res.json();
-  return todos.slice(0, 10); // limit to 10 todos
+  return todos.slice(0, 20); // limit to 10 todos
 }
 
 export default async function TodosPage() {
@@ -20,6 +20,7 @@ export default async function TodosPage() {
       <ul>
         {todos.map((todo: { id: number, title: string, completed: boolean }) => (
           <li key={todo.id}>
+            <strong>ID : {todo.id}--</strong>
             <Link href={`/todos/${todo.id}`}>
               {todo.title} {todo.completed ? "(Completed)" : "(Pending)"}
             </Link>
