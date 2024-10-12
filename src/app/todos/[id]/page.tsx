@@ -6,8 +6,9 @@ export async function generateStaticParams() {
     throw new Error('Failed to fetch data');
   }
   const todos = await res.json();
+  console.log('todos', todos)
   return todos.map((post) => ({
-    id: post.id,
+    id: post.id.toString(),
   }))
 }
 
