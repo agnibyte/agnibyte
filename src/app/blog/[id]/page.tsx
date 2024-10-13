@@ -8,7 +8,6 @@ export async function generateStaticParams() {
     fetchBlogs(),
   ]);
 
-  console.log('allBlogs', allBlogs.pageBlogPostCollection.items)
   let blogsArr = []
   if (allBlogs.pageBlogPostCollection.items.length > 0) {
     blogsArr = allBlogs.pageBlogPostCollection.items
