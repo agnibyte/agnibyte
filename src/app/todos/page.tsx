@@ -1,4 +1,5 @@
 // app/todos/page.tsx
+import { fetchBlogs } from "@/lib/blogService";
 import Link from "next/link";
 
 // Fetch data on the server-side (SSR)
@@ -12,7 +13,10 @@ async function getTodos() {
 }
 
 export default async function TodosPage() {
-  const todos = await getTodos();
+  const [todos, allBlogs] = await Promise.all([
+    getTodos(),
+    fetchBlogs(),
+  ]);
 
   return (
     <div>
