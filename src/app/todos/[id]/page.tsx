@@ -1,28 +1,14 @@
-import { fetchBlogs } from "@/lib/blogService";
-
 // app/todos/[id]/page.tsx
 export async function generateStaticParams() {
 
-  const [allBlogs] = await Promise.all([
-    fetchBlogs(),
-  ]);
   const res = await fetch('https://jsonplaceholder.typicode.com/todos');
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
   const todos = await res.json();
-  console.log('allBlogs', allBlogs.pageBlogPostCollection.items)
-  let blogsArr = []
-  if (allBlogs.pageBlogPostCollection.items.length > 0) {
-    blogsArr = allBlogs.pageBlogPostCollection.items
-
-  }
-  // console.log('first', blogsArr.map((blog) => ({
-  //   id: blog.sys.id.toString(),
-  // })))
-
-  return blogsArr.map((blog) => ({
-    id: blog.sys.id.toString(),
+  console.log('todos', todos)
+  return todos.map((post) => ({
+    id: post.id.toString(),
   }))
 }
 
