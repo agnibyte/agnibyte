@@ -47,34 +47,34 @@ const menuData: Menu[] = [
 
   {
     id: 8,
-    title: "Pages",
+    title: "Our Services",
     newTab: false,
     submenu: [
       {
         id: 41,
-        title: "About Page",
-        path: "/about",
+        title: "Web Services",
+        path: "/",
         newTab: false,
       },
       {
         id: 42,
-        title: "Contact Page",
-        path: "/contact",
+        title: "Website Devlopment",
+        path: "/",
         newTab: false,
       },
       
       {
         id: 46,
-        title: "Sign In Page",
-        path: "/signin",
+        title: "App Devlopment",
+        path: "/",
         newTab: false,
       },
       {
         id: 47,
-        title: "Sign Up Page",
-        path: "/signup",
+        title: "SMTP Services",
+        path: "/",
         newTab: false,
-      },
+      }
     ],
   },
 ];
